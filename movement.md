@@ -4,3 +4,9 @@ Project setup
   * public vs private
   * firebase setup
 
+2.FormPage SetUp
+  design 
+  validation
+  state and change 
+  
+

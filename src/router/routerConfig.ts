@@ -1,10 +1,12 @@
 import { lazy } from "react";
 import { ROUTES_PATH } from "../utils/constant";
 
+
 const Login = lazy(() => import("pages/Login"));
 
 const Home = lazy(() => import("pages/Dashboard"));
 
+const UploadActivity= lazy(() => import("pages/UploadActivity"));
 export const publicRoutes = [
   {
     key: "login",
@@ -21,4 +23,9 @@ export const privateRoutes = [
     component: Home,
     // layout: PrivateLayout,
   },
+  {
+    key:"upload",
+    path:ROUTES_PATH.UPLOADACTIVITY,
+    component:UploadActivity,
+  }
 ];

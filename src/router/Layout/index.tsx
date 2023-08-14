@@ -31,5 +31,5 @@ export const PrivateRoute = () => {
 
 export const PublicRoute = () => {
   const { token } = useAppSelector((state: RootState) => state.auth);
-  return !token ? <Outlet /> : <Navigate to={ROUTES_PATH.DASHBOARD} />;
+  return !token ? <Outlet /> : <Navigate to={ROUTES_PATH.UPLOADACTIVITY} />;
 };
