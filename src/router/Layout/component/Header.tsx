@@ -5,8 +5,8 @@ import { isDialogOpen } from "utils/CommonService";
 import { useDispatch, useSelector } from "react-redux";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Button from "@mui/material/Button";
-import bell from "assets/images/icons/bell-icon.png";
-import quemark from "assets/images/icons/que-mark.png";
+// import bell from "assets/images/icons/bell-icon.png";
+// import quemark from "../../../assets/images/icons/bell-icon.png";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -48,10 +48,10 @@ const Header = () => {
       </div>
       <div className="header_bar">
         <span className="aue mr20 pointer">
-          <img src={quemark} alt="quemark" />
+          <img src={""} alt="quemark" />
         </span>
         <span className="notification mr20 pointer">
-          <img src={bell} alt="bell" />
+          <img src={""} alt="bell" />
         </span>
         <Dropdown>
           <Dropdown.Toggle id="dropdown-basic" className="toggle_btn">
