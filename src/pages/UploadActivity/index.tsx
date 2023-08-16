@@ -46,7 +46,7 @@ export default function UploadActivity() {
         <label htmlFor="" className="gpx">
         <input type="file" accept="*.gpx" multiple id="gpxfile"   />
         <button className="btn bold" onClick={handleSubmit}>
-          Upload{" "}
+          Upload GPX File{" "}
         </button>
         </label>
       </div>
@@ -117,11 +117,9 @@ export default function UploadActivity() {
               <label htmlFor="">Type of Ride</label>
               <div className="dropdown">
                 <select name="rideType" id="rideType" onChange={handleChange}>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
+                  <option>Bike</option>
+                  <option>Walk</option>
+                  <option>Run</option>
                 </select>
 
                 {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
