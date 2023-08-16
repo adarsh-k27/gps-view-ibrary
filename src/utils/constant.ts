@@ -5,7 +5,7 @@ export const PUBLIC_PATH = {
 export const PRIVATE_PATH = {
   DASHBOARD: "/dashboard",
   UPLOADACTIVITY:"/upload",
-  HOME:"/home"
+  HOME:"/map"
 };
 
 export const ROUTES_PATH = {
