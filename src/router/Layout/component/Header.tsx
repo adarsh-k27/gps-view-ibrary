@@ -47,12 +47,7 @@ const Header = () => {
         </div>
       </div>
       <div className="header_bar">
-        <span className="aue mr20 pointer">
-          <img src={""} alt="quemark" />
-        </span>
-        <span className="notification mr20 pointer">
-          <img src={""} alt="bell" />
-        </span>
+        
         <Dropdown>
           <Dropdown.Toggle id="dropdown-basic" className="toggle_btn">
             <div className="header_drop">

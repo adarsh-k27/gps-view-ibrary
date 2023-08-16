@@ -43,9 +43,12 @@ export default function UploadActivity() {
       </div>
       <div className="flex-row">
         <span className="bold size-sm ">UploadAnd Sync Your Activities</span>
+        <label htmlFor="" className="gpx">
+        <input type="file" accept="*.gpx" multiple id="gpxfile"   />
         <button className="btn bold" onClick={handleSubmit}>
           Upload{" "}
         </button>
+        </label>
       </div>
       <form action="" onSubmit={handleSubmit}>
         <div className="flex-row">
@@ -161,6 +164,9 @@ export default function UploadActivity() {
               {validator.current.message("mapType", form.mapType, "required")}
             </div>
           </div>
+        </div>
+        <div className="mt-3">
+          <button className="btn-save">Save</button>
         </div>
       </form>
     </section>
