@@ -56,7 +56,7 @@ const Header = () => {
         <Dropdown>
           <Dropdown.Toggle id="dropdown-basic" className="toggle_btn">
             <div className="header_drop">
-              <span>M</span> Mannan Qureshi
+              <span>A</span> Admin
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
