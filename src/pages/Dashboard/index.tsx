@@ -34,6 +34,9 @@ const Dashboard = () => {
         setPagination({ ...pagination, limit: +event.target.value });
     };
 
+    
+    
+
   return (
     <div className="main-content">
         <form>

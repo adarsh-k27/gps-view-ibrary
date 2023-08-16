@@ -11,6 +11,10 @@
         top: 59px;
         height: calc(100vh - 59px);
     }
+    #map {
+        height: 100vh;
+        width: 100%;
+      }
 
     .side.hide_side {
         width: 0;

@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { ROUTES_PATH } from "../utils/constant";
+import GoogleMap from "pages/Map";
 
 
 const Login = lazy(() => import("pages/Login"));
@@ -27,5 +28,10 @@ export const privateRoutes = [
     key:"upload",
     path:ROUTES_PATH.UPLOADACTIVITY,
     component:UploadActivity,
+  },
+  {
+    key:"home",
+    path:ROUTES_PATH.HOME,
+    component:GoogleMap,
   }
 ];

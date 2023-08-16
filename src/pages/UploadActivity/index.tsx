@@ -37,7 +37,7 @@ export default function UploadActivity() {
   };
 
   return (
-    <section>
+    <section className="main-content">
       <div>
         <h1 className="bold size-lg">About</h1>
       </div>
