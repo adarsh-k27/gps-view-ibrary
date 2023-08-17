@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import SimpleReactValidator from "simple-react-validator";
+import React, { useState } from "react";
 
 export default function UploadedForms({
   forms,
@@ -9,9 +8,6 @@ export default function UploadedForms({
   validator,
 }: any) {
   const [_, forceUpdate] = useState(false);
-
-  const [newForms, setNewForms] = useState(forms);
-  const [newform, setNewForm] = useState(form);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -54,7 +50,7 @@ export default function UploadedForms({
               onChange={handleChange}
               value={form.title}
             />
-            {validator.current.message("title", newform?.title, "required")}
+            {validator.current.message("title", form?.title, "required")}
           </div>
 
           <div className="flex">

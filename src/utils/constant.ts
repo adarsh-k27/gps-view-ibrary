@@ -1,3 +1,5 @@
+import { ToastOptions } from "react-toastify";
+
 export const PUBLIC_PATH = {
   LOGIN: "/",
 };
@@ -59,3 +61,14 @@ export  const tableData2 = [
 
 
 export const minimumUploads=5
+
+export const toastOptions:ToastOptions={
+  position: "top-right",
+  autoClose: 2000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+}

@@ -1,8 +1,10 @@
-import { useState,useRef } from "react";
-import { minimumUploads } from "../../utils/constant";
+import { useState, useRef } from "react";
+import { minimumUploads, toastOptions } from "../../utils/constant";
 import UploadedForms from "./forms";
 import SimpleReactValidator from "simple-react-validator";
-import Chart from "pages/chart";
+import { toast } from "react-toastify";
+
+
 export default function UploadActivity() {
   const validator = useRef<SimpleReactValidator>(new SimpleReactValidator());
   const defaultForm = {
@@ -20,12 +22,8 @@ export default function UploadActivity() {
   const handleSelectFile = (e: any) => {
     const files = e.target.files;
 
-    if (
-      files.length &&
-      forms.length &&
-      files.length + forms.length > minimumUploads
-    )
-      return "Limit Exceed ";
+    if (files.length && files.length + forms.length > minimumUploads)
+      return toast.warning("You canonly Upload Up To 5 Files",toastOptions );
 
     const newFiles: any = [];
     for (let i = 0; i < files.length; i++) {
@@ -70,7 +68,6 @@ export default function UploadActivity() {
             ))
           : null}
       </div>
-      
     </section>
   );
 }
