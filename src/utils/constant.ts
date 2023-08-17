@@ -56,3 +56,6 @@ export  const tableData2 = [
   "Property View",
   "Model Allocations"
 ] 
+
+
+export const minimumUploads=5

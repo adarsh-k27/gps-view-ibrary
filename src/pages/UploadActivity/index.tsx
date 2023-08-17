@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
-import { useState } from "react";
+import { useState,useRef } from "react";
+import { minimumUploads } from "../../utils/constant";
+import UploadedForms from "./forms";
 import SimpleReactValidator from "simple-react-validator";
-
 export default function UploadActivity() {
   const validator = useRef<SimpleReactValidator>(new SimpleReactValidator());
   const defaultForm = {
@@ -14,159 +14,61 @@ export default function UploadActivity() {
     rideType: "",
   };
 
-  const [form, setForm] = useState(defaultForm);
-  const [_, forceUpdate] = useState(false);
+  const [forms, setForms] = useState<any>([]);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setForm({ ...defaultForm, [e.target.name]: e.target.value });
-  };
+  const handleSelectFile = (e: any) => {
+    const files = e.target.files;
 
-  const handleSubmit = (e: any) => {
-    try {
-      if (validator.current.allValid()) {
-      } else {
-        console.log(validator.current.errorMessages);
-        validator.current.showMessages();
-        forceUpdate((prev) => !prev);
-      }
-    } catch (error) {}
+    if (
+      files.length &&
+      forms.length &&
+      files.length + forms.length > minimumUploads
+    )
+      return "Limit Exceed ";
+
+    const newFiles: any = [];
+    for (let i = 0; i < files.length; i++) {
+      let fileName = files[i].name.split(".")[0];
+
+      const metadata = { ...defaultForm, title: fileName, file: files[i] };
+
+      newFiles.push(metadata);
+    }
+    setForms([...forms, ...newFiles]);
   };
 
   return (
-    <section>
+    <section className="main-content">
       <div>
         <h1 className="bold size-lg">About</h1>
       </div>
       <div className="flex-row">
         <span className="bold size-sm ">UploadAnd Sync Your Activities</span>
         <label htmlFor="" className="gpx">
-        <input type="file" accept="*.gpx" multiple id="gpxfile"   />
-        <button className="btn bold" onClick={handleSubmit}>
-          Upload GPX File{" "}
-        </button>
+          <input
+            type="file"
+            accept="*.gpx"
+            multiple
+            id="gpxfile"
+            onChange={handleSelectFile}
+          />
+          <button className="btn bold">Upload GPX File </button>
         </label>
       </div>
-      <form action="" onSubmit={handleSubmit}>
-        <div className="flex-row">
-          <div className="flex gap-1">
-            <div className="flex">
-              <label htmlFor="title">Title</label>
-              <input
-                name="title"
-                type="text"
-                id="title"
-                onChange={handleChange}
+      <div className="flex " style={{ gap: "1rem" }}>
+        {forms.length
+          ? forms.map((formDetails: any, index: number) => (
+              <UploadedForms
+                forms={forms}
+                form={formDetails}
+                setForm={setForms}
+                index={index}
+                key={index}
+                validator={validator}
               />
-              {validator.current.message("title", form.title, "required")}
-            </div>
-
-            <div className="flex">
-              <label htmlFor="description ">Description</label>
-              <textarea
-                name="description"
-                id="description"
-                onChange={handleChange}
-              />
-              {validator.current.message(
-                "description",
-                form.description,
-                "required"
-              )}
-            </div>
-            <div className="flex">
-              <label htmlFor="">Private Notes</label>
-              <textarea
-                rows={10}
-                name="privateNotes"
-                id="privateNotes"
-                cols={10}
-                onChange={handleChange}
-              />
-              {validator.current.message(
-                "privateNotes",
-                form.privateNotes,
-                "required"
-              )}
-            </div>
-          </div>
-          <div className="flex gap-1">
-            <div className="flex">
-              <label htmlFor="">Activity Type</label>
-              <div className="dropdown">
-                <select id="activityType" onChange={handleChange}>
-                  <option>Biking</option>
-                  <option>Paragliding</option>
-                  <option>PPG</option>
-                  <option>Overlanding</option>
-                  <option>Ride</option>
-                </select>
-
-                {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
-              </div>
-              {validator.current.message(
-                "activityType",
-                form.activityType,
-                "required"
-              )}
-            </div>
-            <div className="flex">
-              <label htmlFor="">Type of Ride</label>
-              <div className="dropdown">
-                <select name="rideType" id="rideType" onChange={handleChange}>
-                  <option>Bike</option>
-                  <option>Walk</option>
-                  <option>Run</option>
-                </select>
-
-                {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
-              </div>
-              {validator.current.message("rideType", form.rideType, "required")}
-            </div>
-            {/* <div className="flex">
-              <label htmlFor="">Tags</label>
-              <input type="text" />
-            </div> */}
-            <div className="flex">
-              <label htmlFor="">Bike</label>
-              <div className="dropdown">
-                <select name="bike" id="bike" onChange={handleChange}>
-                  {/* <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option> */}
-                </select>
-
-                {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
-              </div>
-              {validator.current.message("bike", form.bike, "required")}
-            </div>
-          </div>
-          <div className="flex gap-1">
-            <div className="flex">
-              <label htmlFor="">Map Type</label>
-              <div className="dropdown">
-                <select name="mapType" id="mapType" onChange={handleChange}>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                  <option>sjkjbjd</option>
-                </select>
-                {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
-              </div>
-              {validator.current.message("mapType", form.mapType, "required")}
-            </div>
-          </div>
-        </div>
-        <div className="mt-3">
-          <button className="btn-save">Save</button>
-        </div>
-      </form>
+            ))
+          : null}
+      </div>
     </section>
   );
 }
