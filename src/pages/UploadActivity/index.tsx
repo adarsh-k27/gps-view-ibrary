@@ -2,6 +2,7 @@ import { useState,useRef } from "react";
 import { minimumUploads } from "../../utils/constant";
 import UploadedForms from "./forms";
 import SimpleReactValidator from "simple-react-validator";
+import Chart from "pages/chart";
 export default function UploadActivity() {
   const validator = useRef<SimpleReactValidator>(new SimpleReactValidator());
   const defaultForm = {
@@ -69,6 +70,7 @@ export default function UploadActivity() {
             ))
           : null}
       </div>
+      
     </section>
   );
 }
