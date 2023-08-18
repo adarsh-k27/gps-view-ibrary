@@ -160,13 +160,13 @@ export default function UploadedForms({
         </div>
       </div>
       <div className=" btn-container mt-3">
-        <button type="submit" className="btn-save">
+        <button type="submit" className="btnSubmit mr15">
           Save
         </button>
 
         <button
-          type="submit"
-          className="btn-discard"
+          type="button"
+          className="btnCancel"
           onClick={() => {
             handleDiscard(index);
           }}

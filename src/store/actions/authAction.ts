@@ -19,22 +19,16 @@ export const login = (formData: any) => async (dispatch: AppDispatch) => {
 
     // check the user have access to login
     try {
-      const credentials = await signInWithEmailAndPassword(
+      const credentials: any = await signInWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
       if (credentials) {
-       
-        const user = credentials.user;
-        const { accessToken, email, displayName, emailVerified } = user;
-        const tokenResponse = credentials._tokenResponse;
-        const { refreshToken } = tokenResponse;
-        localStorage.setItem("token", accessToken);
         dispatch(
           AuthAction.login({
-            access_token: accessToken,
-            refresh_token: refreshToken,
+            access_token: credentials._tokenResponse.idToken,
+            refresh_token: credentials._tokenResponse.refreshToken,
           })
         );
         return true;

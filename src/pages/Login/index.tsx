@@ -118,10 +118,10 @@ const Login = () => {
           >
             {btnLoad ? (
               <ThreeDots
-                height="45"
+                height="25"
                 width="45"
                 radius="9"
-                color="#FFFFF"
+                color="#FFFFFF"
                 ariaLabel="three-dots-loading"
                 visible={true}
                 wrapperStyle={{ justifyContent: "center" }}
