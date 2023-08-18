@@ -16,9 +16,13 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import {ThreeDots} from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner";
 const Login = () => {
   const [checked, setChecked] = useState(true);
+  const [error, setError] = useState<any>({
+    email: "",
+    password: "",
+  });
   const handleChange = (event: any) => {
     setChecked(event.target.checked);
   };
@@ -27,20 +31,29 @@ const Login = () => {
   const [btnLoad, setBtnLoad] = useState(false);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setBtnLoad(true)
+
     const data = new FormData(event.currentTarget);
-    const formData = {
+    const formData: any = {
       email: data.get("email"),
       password: data.get("password"),
     };
-
-    dispatch(login(formData))
-      .then((res) => {
-        navigate(ROUTES_PATH.UPLOADACTIVITY);
-      })
-      .finally(() => {
-        setBtnLoad(false);
+    if (formData.password.length < 6) {
+      return setError({
+        email: "",
+        password: "Please enter your 6 digit password",
       });
+    }
+
+    if (formData.email && formData.password) {
+      setBtnLoad(true);
+      dispatch(login(formData))
+        .then((res) => {
+          navigate(ROUTES_PATH.UPLOADACTIVITY);
+        })
+        .finally(() => {
+          setBtnLoad(false);
+        });
+    }
     // pass authentiction Fuction Here
   };
   return (
@@ -70,8 +83,13 @@ const Login = () => {
             autoComplete="email"
             type="email"
             autoFocus
-            onChange={handleChange}
+            onChange={() => {
+              setError({});
+            }}
           />
+          <p className="srv-validation-message" style={{ color: "red" }}>
+            {error.email ? error.email : ""}
+          </p>
           <TextField
             margin="normal"
             required
@@ -81,7 +99,13 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={() => {
+              setError({});
+            }}
           />
+          <p className="srv-validation-message" style={{ color: "red" }}>
+            {error.password ? error.password : ""}
+          </p>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
@@ -92,7 +116,8 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            {btnLoad ? <ThreeDots
+            {btnLoad ? (
+              <ThreeDots
                 height="45"
                 width="45"
                 radius="9"
@@ -100,7 +125,10 @@ const Login = () => {
                 ariaLabel="three-dots-loading"
                 visible={true}
                 wrapperStyle={{ justifyContent: "center" }}
-              /> : "Sign In"}
+              />
+            ) : (
+              "Sign In"
+            )}
           </Button>
           <Grid container>
             <Grid item xs>
