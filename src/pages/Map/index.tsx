@@ -7,9 +7,7 @@ export default function MapPage() {
       <div>Button sections</div>
       <div style={{ display: "grid", gridTemplateColumns: "20% 80%" }}>
         <FilePage />
-        <div className="" id="map">
-          
-        </div>
+        
       </div>
     </div>
   );
