@@ -33,39 +33,8 @@ const Sidebar = () => {
           <ListItemText>Dashboard</ListItemText>
         </ListItemButton>
       </Link>
-      <Link to={""}>
-        <ListItemButton>
-          <ListItemIcon>
-            <HomeOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText>Image</ListItemText>
-        </ListItemButton>
-      </Link>
-      <ListItemButton>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItemButton>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
     </List>
   );
-}
+};
 
 export default Sidebar;

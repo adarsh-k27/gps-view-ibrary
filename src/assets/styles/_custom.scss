@@ -11,9 +11,25 @@
         top: 59px;
         height: calc(100vh - 59px);
     }
+<<<<<<< HEAD
     #map {
         height: 100vh;
         width: 100%;
+=======
+    .gpx {
+        position: relative;
+      }
+
+    input[type="file"]{
+        position: absolute;
+        opacity: 0.000000001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        cursor: pointer;
+>>>>>>> 361dd67fb30e89acdf1c687252de28ea560869f1
       }
 
     .side.hide_side {
@@ -105,6 +121,32 @@
         background-color: green;
         color: black;
     }
+    .btn-save{
+        width: auto;
+        height: auto;
+        padding: .5rem 1rem;
+        color:black;
+        background-color: orange;
+        border-radius: 3px;
+        border: none;
+    }
+    .btn-discard{
+        width: auto;
+        height: auto;
+        padding: .5rem 1rem;
+        color: white;
+        font-weight: 400;
+        background-color:rgba(213, 11, 11, 0.923);
+        border-radius: 3px;
+        border: none;
+    }
+    .btn-discard:hover{
+        background-color:rgba(213, 11, 11, 0.777) ;
+    }
+    .btn-save:hover{
+        background-color: rgb(198, 152, 67);
+        color: rgb(6, 6, 6);
+    }
     .btn:hover{
         background-color: rgb(42, 131, 42);
         color: rgb(6, 6, 6);
@@ -128,11 +170,18 @@
         padding: 15px;
         box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
     }
+    .info-text{
+        color: gray;
+        font-size: medium;
+        margin-top: -1rem;
+       
+    }
     .srv-validation-message {
         color: #ff0000 !important;
         font-size: 12px;
         margin-top: 4px;
       }
+<<<<<<< HEAD
       .file-container{
         width: 100%;
         height: auto;
@@ -154,6 +203,23 @@
         color: white;
       }
 
+=======
+      .upload-form{
+        padding: 1rem 1rem;
+        background-color:rgba(240, 232, 232, 0.929);
+      }
+      .upload-form:hover{
+        background-color:rgba(234, 217, 217, 0.641) ;
+      }
+      .btn-container {
+        width: 70%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+>>>>>>> 361dd67fb30e89acdf1c687252de28ea560869f1
 }
 
 .breadcrumb {
