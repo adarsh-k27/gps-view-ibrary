@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import { forErrorToast, forSuccessToast, forWarningToast } from "utils/CommonService";
+import {  forSuccessToast } from "utils/CommonService";
 
 export default function UploadedForms({
   forms,
