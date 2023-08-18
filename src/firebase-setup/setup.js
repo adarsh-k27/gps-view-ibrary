@@ -12,20 +12,17 @@ import {
   limit,
 } from "firebase/firestore";
 // import { getStorage } from "firebase/storage";
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCsUfOGcSxf1WfRCVxgCc-MQLJdi26Kzf0",
-  authDomain: "heat-map-95b3b.firebaseapp.com",
-  projectId: "heat-map-95b3b",
-  storageBucket: "heat-map-95b3b.appspot.com",
-  messagingSenderId: "813471291947",
-  appId: "1:813471291947:web:e15c0d1a9d9d1d70ee686e"
+  apiKey: "AIzaSyDlaKIFmhCJOkhcGb4b1X9tUwr3g2vc-HE",
+  authDomain: "savuti-c0969.firebaseapp.com",
+  projectId: "savuti-c0969",
+  storageBucket: "savuti-c0969.appspot.com",
+  messagingSenderId: "10101294283",
+  appId: "1:10101294283:web:fbdc65a3e4d1c83c7cc74e",
+  measurementId: "G-N792HE0G6W",
 };
 
 export const app = initializeApp(firebaseConfig);
@@ -33,7 +30,6 @@ export const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-
 
 export const getAllDocuments = async (collectionName) => {
   const res = await getDocs(collection(db, collectionName));
@@ -48,11 +44,7 @@ export const addDocument = (data, collectionName) =>
 export const deleteDocument = async (collectionName, id) =>
   await deleteDoc(doc(db, collectionName, id));
 
-export const updateDocument = async (
-  updateUser,
-  collectionName,
-  docId
-) => {
+export const updateDocument = async (updateUser, collectionName, docId) => {
   try {
     const docRef = doc(collection(db, collectionName), docId);
     await updateDoc(docRef, updateUser);
@@ -64,13 +56,10 @@ const storage = getStorage(app);
 
 export default storage;
 
-export const GetQueryData = async (
-  collectionName,
-  _q
-) => {
+export const GetQueryData = async (collectionName, _q) => {
   try {
     const CollectionRef = collection(db, collectionName);
-    const _query = query(CollectionRef, _q,limit(5));
+    const _query = query(CollectionRef, _q, limit(5));
 
     let res = await getDocs(_query);
 

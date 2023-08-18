@@ -24,20 +24,23 @@ const Login = () => {
   };
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const handleLogin = () => {
-    dispatch(login()).then((res) => {
-      navigate(ROUTES_PATH.UPLOADACTIVITY);
-    });
-  };
+  const [btnLoad, setBtnLoad] = useState(false);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setBtnLoad(true)
     const data = new FormData(event.currentTarget);
     const formData = {
       email: data.get("email"),
       password: data.get("password"),
     };
 
+    dispatch(login(formData))
+      .then((res) => {
+        navigate(ROUTES_PATH.UPLOADACTIVITY);
+      })
+      .finally(() => {
+        setBtnLoad(false);
+      });
     // pass authentiction Fuction Here
   };
   return (
@@ -56,7 +59,7 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -89,7 +92,7 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            {btnLoad ? "Loading.." : "Sign In"}
           </Button>
           <Grid container>
             <Grid item xs>

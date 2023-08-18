@@ -1,6 +1,7 @@
 import { AppDispatch } from "../store";
-import * as auth from "../reducers/authReducer";
+import * as AuthAction from "../reducers/authReducer";
 // import * as API from "../apiAction/authApi"
+import { auth } from "firebase-setup/setup";
 import {
   // LoginForm,
   Signupfield,
@@ -9,24 +10,49 @@ import {
   Forgotpasswordfield,
   Confirmcodefield,
 } from "../types/authType";
-
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { forErrorToast } from "utils/CommonService";
 // export const login = (form: LoginForm) => async (dispatch: AppDispatch) => {
-  export const login = () => async (dispatch: AppDispatch) => {
+export const login = (formData: any) => async (dispatch: AppDispatch) => {
   try {
-    // const res: LoginRes = await API.login(form)
-    // if(res.access_token) {
-    // Cookies.set("token", "asdadasd", { expires: 1 });
-    localStorage.setItem("token",'asdadasd')
-    // Cookies.set("user", JSON.stringify(user), { expires: 1 });
-    // Cookies.set("user", JSON.stringify(user), { expires: 1 });
-    // Cookies.set('refresh_token', res.refresh_token, { expires: 1 })
-    // }
-    dispatch(
-      auth.login({
-        access_token: "asdadasd",
-        refresh_token: "asdasdasd",
-      })
-    );
+    //here we are geting the formData
+
+    // check the user have access to login
+    try {
+      const credentials = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      if (credentials) {
+       
+        const user = credentials.user;
+        const { accessToken, email, displayName, emailVerified } = user;
+        const tokenResponse = credentials._tokenResponse;
+        const { refreshToken } = tokenResponse;
+        localStorage.setItem("token", accessToken);
+        dispatch(
+          AuthAction.login({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          })
+        );
+        return true;
+      }
+    } catch (error: any) {
+      console.log(error);
+      if (error) {
+        if (error.message.includes("auth/wrong-password")) {
+          return forErrorToast("Password Is Wrong");
+        } else if (error.message.includes("auth/user-not-found")) {
+          return forErrorToast("User Not Registered Yet");
+        } else {
+          return forErrorToast("Something went wrong");
+        }
+      }
+      return false
+    }
+
     return true;
   } catch (err) {}
 };
@@ -101,9 +127,9 @@ export const setuppassword =
     } catch (err) {}
   };
 
-export const logout = (dispatch: AppDispatch) => {
-    dispatch(auth.logout());
-};
+// export const logout = (dispatch: AppDispatch) => {
+//   dispatch(auth.logout());
+// };
 
 export const refreshToken = (dispatch: AppDispatch) => {
   // const res: any = await API.refreshToken()
@@ -113,6 +139,6 @@ export const refreshToken = (dispatch: AppDispatch) => {
   // }
   // return res
   return {
-    access_token: "asdasdd"
-  }
-}
+    access_token: "asdasdd",
+  };
+};
