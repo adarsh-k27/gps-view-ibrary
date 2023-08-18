@@ -1,4 +1,4 @@
-import { data as GEO_CORDINATES } from "HeatMapCordintes";
+import { data as GEO_CORDINATES,markerCordinates } from "HeatMapCordintes";
 import React, { useEffect, useRef, useState } from "react";
 import cluster from 'assets/images/icons/cluster.png';
 declare global {
