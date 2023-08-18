@@ -10,6 +10,11 @@ Project setup
   state and change 
 
 3.Formpage with selected Arrays
+  discrd property added 
+  save functionality remaining
+
+4.GoogleMap Page for Uploaded Forms .
+  
   
   
 
