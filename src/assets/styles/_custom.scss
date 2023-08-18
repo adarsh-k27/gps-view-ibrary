@@ -11,25 +11,9 @@
         top: 59px;
         height: calc(100vh - 59px);
     }
-<<<<<<< HEAD
     #map {
         height: 100vh;
         width: 100%;
-=======
-    .gpx {
-        position: relative;
-      }
-
-    input[type="file"]{
-        position: absolute;
-        opacity: 0.000000001;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9;
-        cursor: pointer;
->>>>>>> 361dd67fb30e89acdf1c687252de28ea560869f1
       }
 
     .side.hide_side {
@@ -181,7 +165,6 @@
         font-size: 12px;
         margin-top: 4px;
       }
-<<<<<<< HEAD
       .file-container{
         width: 100%;
         height: auto;
@@ -191,6 +174,7 @@
         gap: 1rem;
       }
       .files{
+        cursor: pointer;
         width: 90%;
         height: auto;
         padding: .5rem .5rem;
@@ -203,23 +187,6 @@
         color: white;
       }
 
-=======
-      .upload-form{
-        padding: 1rem 1rem;
-        background-color:rgba(240, 232, 232, 0.929);
-      }
-      .upload-form:hover{
-        background-color:rgba(234, 217, 217, 0.641) ;
-      }
-      .btn-container {
-        width: 70%;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
->>>>>>> 361dd67fb30e89acdf1c687252de28ea560869f1
 }
 
 .breadcrumb {
