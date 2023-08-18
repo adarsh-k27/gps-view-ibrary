@@ -16,7 +16,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
+import {ThreeDots} from 'react-loader-spinner'
 const Login = () => {
   const [checked, setChecked] = useState(true);
   const handleChange = (event: any) => {
@@ -92,7 +92,15 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            {btnLoad ? "Loading.." : "Sign In"}
+            {btnLoad ? <ThreeDots
+                height="45"
+                width="45"
+                radius="9"
+                color="#FFFFF"
+                ariaLabel="three-dots-loading"
+                visible={true}
+                wrapperStyle={{ justifyContent: "center" }}
+              /> : "Sign In"}
           </Button>
           <Grid container>
             <Grid item xs>
