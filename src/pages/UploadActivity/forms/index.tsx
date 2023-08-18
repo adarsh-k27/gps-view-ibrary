@@ -152,15 +152,14 @@ export default function UploadedForms({
           </div>
         </div>
       </div>
-      <div className="mt-3">
+      <div className=" btn-container mt-3">
         <button type="submit" className="btn-save">
           Save
         </button>
-        <div className="mt-3">
-          <button type="submit" className="btn-save">
-            Discard
-          </button>
-        </div>
+
+        <button type="submit" className="btn-discard">
+          Discard
+        </button>
       </div>
     </form>
   );

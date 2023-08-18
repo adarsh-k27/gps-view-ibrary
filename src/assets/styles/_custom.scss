@@ -119,10 +119,23 @@
         width: auto;
         height: auto;
         padding: .5rem 1rem;
-        color: black;
+        color:black;
         background-color: orange;
         border-radius: 3px;
         border: none;
+    }
+    .btn-discard{
+        width: auto;
+        height: auto;
+        padding: .5rem 1rem;
+        color: white;
+        font-weight: 400;
+        background-color:rgba(213, 11, 11, 0.923);
+        border-radius: 3px;
+        border: none;
+    }
+    .btn-discard:hover{
+        background-color:rgba(213, 11, 11, 0.777) ;
     }
     .btn-save:hover{
         background-color: rgb(198, 152, 67);
@@ -151,13 +164,31 @@
         padding: 15px;
         box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
     }
+    .info-text{
+        color: gray;
+        font-size: medium;
+        margin-top: -1rem;
+       
+    }
     .srv-validation-message {
         color: #ff0000 !important;
         font-size: 12px;
         margin-top: 4px;
       }
       .upload-form{
-        border: 2px solid green;
+        padding: 1rem 1rem;
+        background-color:rgba(240, 232, 232, 0.929);
+      }
+      .upload-form:hover{
+        background-color:rgba(234, 217, 217, 0.641) ;
+      }
+      .btn-container {
+        width: 70%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
       }
 }
 

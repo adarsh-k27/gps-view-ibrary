@@ -4,7 +4,6 @@ import UploadedForms from "./forms";
 import SimpleReactValidator from "simple-react-validator";
 import { toast } from "react-toastify";
 
-
 export default function UploadActivity() {
   const validator = useRef<SimpleReactValidator>(new SimpleReactValidator());
   const defaultForm = {
@@ -23,7 +22,7 @@ export default function UploadActivity() {
     const files = e.target.files;
 
     if (files.length && files.length + forms.length > minimumUploads)
-      return toast.warning("You canonly Upload Up To 5 Files",toastOptions );
+      return toast.warning("You canonly Upload Up To 5 Files", toastOptions);
 
     const newFiles: any = [];
     for (let i = 0; i < files.length; i++) {
@@ -53,6 +52,12 @@ export default function UploadActivity() {
           />
           <button className="btn bold">Upload GPX File </button>
         </label>
+      </div>
+      <div className="info-text">
+        <span>
+          works for multiple .tcx file , .gpx file 25 mb or smaller .Choose Up
+          to ${minimumUploads}
+        </span>
       </div>
       <div className="flex " style={{ gap: "1rem" }}>
         {forms.length
