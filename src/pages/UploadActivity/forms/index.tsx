@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import {  forSuccessToast } from "utils/CommonService";
+import { forSuccessToast } from "utils/CommonService";
 
 export default function UploadedForms({
   forms,
@@ -50,14 +50,15 @@ export default function UploadedForms({
         <div className="flex gap-1">
           <div className="flex">
             <label htmlFor="title">Title</label>
-            <input
+            {/* <input
               name="title"
               type="text"
               id="title"
               onChange={handleChange}
               value={form.title}
-            />
-            {validator.current.message("title", form?.title, "required")}
+            /> */}
+            <span>{form.title}</span>
+            {/* {validator.current.message("title", form?.title, "required")} */}
           </div>
 
           <div className="flex">
@@ -142,22 +143,7 @@ export default function UploadedForms({
             {validator.current.message("bike", form.bike, "required")}
           </div>
         </div>
-        <div className="flex gap-1">
-          <div className="flex">
-            <label htmlFor="">Map Type</label>
-            <div className="dropdown">
-              <select name="mapType" id="mapType" onChange={handleChange}>
-                <option>sjkjbjd</option>
-                <option>sjkjbjd</option>
-                <option>sjkjbjd</option>
-                <option>sjkjbjd</option>
-                <option>sjkjbjd</option>
-              </select>
-              {/* <ArrowDropDownOutlinedIcon fontSize="large" color="primary"  /> */}
-            </div>
-            {validator.current.message("mapType", form.mapType, "required")}
-          </div>
-        </div>
+        <div className="flex gap-1"></div>
       </div>
       <div className=" btn-container mt-3">
         <button type="submit" className="btnSubmit mr15">

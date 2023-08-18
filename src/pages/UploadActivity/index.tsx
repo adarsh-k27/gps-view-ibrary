@@ -3,6 +3,7 @@ import { minimumUploads, toastOptions } from "../../utils/constant";
 import UploadedForms from "./forms";
 import SimpleReactValidator from "simple-react-validator";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function UploadActivity() {
   const validator = useRef<SimpleReactValidator>(new SimpleReactValidator());
@@ -37,8 +38,17 @@ export default function UploadActivity() {
 
   return (
     <section className="main-content">
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
         <h1 className="bold size-lg">About</h1>
+        <Link className="link-btn"  to={"/map"}>Go To Map </Link>
       </div>
       <div className="flex-row">
         <span className="bold size-sm ">UploadAnd Sync Your Activities</span>
