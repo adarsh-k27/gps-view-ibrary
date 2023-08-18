@@ -1,5 +1,6 @@
 import React from "react";
 import FilePage from "./files";
+import GoogleMap from "./gmap";
 
 export default function MapPage() {
   return (
@@ -7,7 +8,7 @@ export default function MapPage() {
       <div>Button sections</div>
       <div style={{ display: "grid", gridTemplateColumns: "20% 80%" }}>
         <FilePage />
-        
+        <GoogleMap />
       </div>
     </div>
   );
