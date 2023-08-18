@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { forErrorToast, forSuccessToast, forWarningToast } from "utils/CommonService";
 
 export default function UploadedForms({
   forms,
@@ -27,6 +28,11 @@ export default function UploadedForms({
     );
   };
 
+  const handleDiscard = (index: number) => {
+    const data = forms.filter((_: any, i: number) => index !== i);
+    setForm(forms.filter((_: any, i: number) => index !== i));
+    return forSuccessToast("Discard Form SuccesFully");
+  };
   const handleSubmit = (e: any) => {
     try {
       e.preventDefault();
@@ -157,7 +163,13 @@ export default function UploadedForms({
           Save
         </button>
 
-        <button type="submit" className="btn-discard">
+        <button
+          type="submit"
+          className="btn-discard"
+          onClick={() => {
+            handleDiscard(index);
+          }}
+        >
           Discard
         </button>
       </div>
