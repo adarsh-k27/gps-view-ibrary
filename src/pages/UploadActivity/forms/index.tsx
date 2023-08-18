@@ -57,7 +57,7 @@ export default function UploadedForms({
               onChange={handleChange}
               value={form.title}
             /> */}
-            <span>{form.title}</span>
+            <span style={{fontWeight:"600"}}>{form.title}</span>
             {/* {validator.current.message("title", form?.title, "required")} */}
           </div>
 

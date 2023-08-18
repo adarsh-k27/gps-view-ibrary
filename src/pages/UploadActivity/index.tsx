@@ -27,7 +27,7 @@ export default function UploadActivity() {
 
     const newFiles: any = [];
     for (let i = 0; i < files.length; i++) {
-      let fileName = files[i].name.split(".")[0];
+      let fileName = files[i].name
 
       const metadata = { ...defaultForm, title: fileName, file: files[i] };
 
