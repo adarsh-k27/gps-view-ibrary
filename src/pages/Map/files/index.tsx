@@ -28,7 +28,19 @@ export default function FilePage() {
 const GpxFile = ({ metadata }: any) => {
   return (
     <button className="files" key={"smapleData"} onMouseOver={() => {}}>
-      <p>Sample Data</p>
+      <div className="meta-container">
+        <span>Mountain Biking</span>
+        <div className="info">
+          <p>4</p>
+          <p>3:01:47</p>
+          <p>64.4 km</p>
+          <p>147 </p>
+        </div>
+      </div>
+      <div className="download">
+        <button>file</button>
+        <button>summary</button>
+      </div>
     </button>
   );
 };
