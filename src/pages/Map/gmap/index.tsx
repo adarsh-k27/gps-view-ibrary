@@ -1,6 +1,6 @@
 import { data as GEO_CORDINATES } from "HeatMapCordintes";
 import React, { useEffect, useRef, useState } from "react";
-
+import cluster from 'assets/images/icons/cluster.png';
 declare global {
   interface Window {
     google: any;
@@ -82,6 +82,23 @@ export default function GoogleMap({}) {
       }
     }
   }, [heatMap]);
+
+  const getMarkers = () => {
+    if (markerCordinates) {
+      return markerCordinates.map(
+        (marker) =>
+          new window.google.maps.Marker({
+            position: marker.position,
+            label: "1",
+            title: marker.title,
+            icon: {
+              url: cluster, // URL to your custom icon image
+              scaledSize: new window.google.maps.Size(30, 30), // Adjust the size of the icon
+            },
+          })
+      );
+    } else return [];
+  };
 
   const getPointsAndSetHeatMap = (heatMap: any) => {
     if (GEO_CORDINATES) {

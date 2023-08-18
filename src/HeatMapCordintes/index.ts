@@ -11,3 +11,7 @@ export const data = {
   fourtData,
   fifthData,
 };
+
+export const markerCordinates=[
+
+]
