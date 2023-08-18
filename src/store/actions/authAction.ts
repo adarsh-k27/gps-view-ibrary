@@ -10,7 +10,7 @@ import {
   Forgotpasswordfield,
   Confirmcodefield,
 } from "../types/authType";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { forErrorToast } from "utils/CommonService";
 // export const login = (form: LoginForm) => async (dispatch: AppDispatch) => {
 export const login = (formData: any) => async (dispatch: AppDispatch) => {
@@ -127,9 +127,9 @@ export const setuppassword =
     } catch (err) {}
   };
 
-// export const logout = (dispatch: AppDispatch) => {
-//   dispatch(auth.logout());
-// };
+export const logout = (dispatch: AppDispatch) => {
+  dispatch(AuthAction.logout());
+};
 
 export const refreshToken = (dispatch: AppDispatch) => {
   // const res: any = await API.refreshToken()
