@@ -40,6 +40,36 @@ export default function GoogleMap({}) {
       });
       setHeatMap(gHeatMap);
 
+      let clustersMarker = new window.MarkerClusterer(gMap, getMarkers(), {
+        imagePath: cluster,
+        styles: [
+          {
+            url: cluster,
+            height: 20,
+            width: 20,
+            anchorText: [-15, -15],
+          },
+        ],
+      });
+
+      window.google.maps.event.addListener(gMap, "zoom_changed", () => {
+        const zoomLevel = map.current.getZoom();
+        setZoomLevel(zoomLevel);
+        if (zoomLevel >= 6) {
+          //show Heat Map
+
+          getPointsAndSetHeatMap(gHeatMap);
+          if (clustersMarker) {
+            clustersMarker.clearMarkers();
+          }
+        } else {
+          //show Marker
+          clustersMarker.clearMarkers();
+          clustersMarker.addMarkers(getMarkers());
+          gHeatMap.setData([]);
+        }
+      });
+
       //here we are setting our cluster
     }
   }, [window.google]);
