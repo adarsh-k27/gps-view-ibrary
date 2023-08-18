@@ -30,8 +30,9 @@ export const privateRoutes = [
     component:UploadActivity,
   },
   {
-    key:"home",
-    path:ROUTES_PATH.HOME,
+    key:"map",
+    path:ROUTES_PATH.MAP,
     component:GoogleMap,
-  }
+  },
+  
 ];
