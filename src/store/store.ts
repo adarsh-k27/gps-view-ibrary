@@ -1,11 +1,13 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import authReducer from "./reducers/authReducer";
-import layoutReducer from "./reducers/layoutReducer"
+import layoutReducer from "./reducers/layoutReducer";
+import UploadFileReducer from "./reducers/fileReducers";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    layout: layoutReducer
+    layout: layoutReducer,
+    uploadfile: UploadFileReducer,
   },
 });
 

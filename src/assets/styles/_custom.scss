@@ -174,12 +174,17 @@
         gap: 1rem;
       }
       .files{
-        cursor: pointer;
+        
         width: 90%;
         height: auto;
         padding: .5rem .5rem;
         background-color: rgb(68, 65, 65);
+        border: none;
       }
+      .files:hover{
+        background-color:rgb(92, 89, 89) ;
+      }
+      
 
       .files p{
         font-weight: 400;

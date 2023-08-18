@@ -1,16 +1,25 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "store/store";
 
-type Props = {};
-
-export default function FilePage({}: Props) {
+export default function FilePage() {
+  const { uploadedGPXFiles } = useSelector(
+    (state: RootState) => state.uploadfile
+  );
   return (
     <Fragment>
       <div className="file-container">
-        <GpxFile />
-        <GpxFile />
-        <GpxFile />
-        <GpxFile />
-        <GpxFile />
+        {uploadedGPXFiles.length ? (
+          uploadedGPXFiles.map((item: any, index: number) => <GpxFile />)
+        ) : (
+          <>
+            <GpxFile />
+            <GpxFile />
+            <GpxFile />
+            <GpxFile />
+            <GpxFile />
+          </>
+        )}
       </div>
     </Fragment>
   );
@@ -18,14 +27,8 @@ export default function FilePage({}: Props) {
 
 const GpxFile = ({ metadata }: any) => {
   return (
-    <div
-      className="files"
-      key={"smapleData"}
-      // onMouseOver={() => {
-      //   handleFileHover("smapleData");
-      // }}
-    >
+    <button className="files" key={"smapleData"} onMouseOver={() => {}}>
       <p>Sample Data</p>
-    </div>
+    </button>
   );
 };
