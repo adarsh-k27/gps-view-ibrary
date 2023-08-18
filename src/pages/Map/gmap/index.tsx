@@ -1,6 +1,6 @@
-import { data as GEO_CORDINATES,markerCordinates } from "HeatMapCordintes";
+import { data as GEO_CORDINATES, markerCordinates } from "HeatMapCordintes";
 import React, { useEffect, useRef, useState } from "react";
-import cluster from 'assets/images/icons/cluster.png';
+import cluster from "assets/images/icons/cluster.png";
 declare global {
   interface Window {
     google: any;
@@ -45,8 +45,8 @@ export default function GoogleMap({}) {
         styles: [
           {
             url: cluster,
-            height: 20,
-            width: 20,
+            height: 40,
+            width: 40,
             anchorText: [-15, -15],
           },
         ],
