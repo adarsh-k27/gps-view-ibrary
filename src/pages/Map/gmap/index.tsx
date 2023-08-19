@@ -1,6 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+
 import { data as GEO_CORDINATES, markerCordinates } from "HeatMapCordintes";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cluster from "assets/images/icons/cluster.png";
+
 declare global {
   interface Window {
     google: any;
@@ -8,7 +12,7 @@ declare global {
   }
 }
 
-export default function GoogleMap({}) {
+export default function GoogleMap() {
   const defaultMapOptions = {
     zoom: 2,
     center: { lat: -34.397, lng: 150.644 },
@@ -21,7 +25,7 @@ export default function GoogleMap({}) {
 
   const [zoomeLevel, setZoomLevel] = useState(defaultMapOptions.zoom);
   const [heatMap, setHeatMap] = useState<any>(null);
-  const [clusterMark, setClusterMark] = useState<any>(null);
+  //const [clusterMark, setClusterMark] = useState<any>(null);
 
   useEffect(() => {
     if (window.google) {
@@ -45,9 +49,12 @@ export default function GoogleMap({}) {
         styles: [
           {
             url: cluster,
-            height: 40,
-            width: 40,
-            anchorText: [-15, -15],
+            height: 30,
+            width: 30,
+            anchorText: [15, -10],
+            repeat: false,
+            textColor: "#000000", // Set the text color of the cluster label
+            textSize: 13, // Set the text size of the cluster label
           },
         ],
       });
