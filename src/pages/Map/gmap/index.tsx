@@ -51,10 +51,10 @@ export default function GoogleMap() {
             url: cluster,
             height: 30,
             width: 30,
-            anchorText: [15, -10],
+            //anchorText: [15, -10],
             repeat: false,
-            textColor: "#000000", // Set the text color of the cluster label
-            textSize: 13, // Set the text size of the cluster label
+            textColor: "#000000", 
+            textSize: 12,
           },
         ],
       });
