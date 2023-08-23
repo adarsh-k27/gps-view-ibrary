@@ -1,6 +1,8 @@
 import React from "react";
 import FilePage from "./files";
 import GoogleMap from "./gmap";
+import GmapLibrary from "./gmapPackage";
+import ClusterTest from "./gmapPackage/google-cluster";
 
 export default function MapPage() {
   return (
@@ -35,6 +37,7 @@ export default function MapPage() {
       <div style={{ display: "grid", gridTemplateColumns: "20% 80%" }}>
         <FilePage />
         <GoogleMap />
+        {/* <ClusterTest /> */}
       </div>
     </div>
   );

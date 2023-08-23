@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-
 import { data as GEO_CORDINATES, markerCordinates } from "HeatMapCordintes";
 import { useEffect, useRef, useState } from "react";
 import cluster from "assets/images/icons/cluster.png";
+import { MyCluster } from "helperclass/clusterclass";
 
 declare global {
   interface Window {
@@ -44,38 +44,43 @@ export default function GoogleMap() {
       });
       setHeatMap(gHeatMap);
 
-      let clustersMarker = new window.MarkerClusterer(gMap, getMarkers(), {
-        imagePath: cluster,
-        styles: [
-          {
-            url: cluster,
-            height: 30,
-            width: 30,
-            //anchorText: [15, -10],
-            repeat: false,
-            textColor: "#000000", 
-            textSize: 12,
-          },
-        ],
-      });
+      // let clustersMarker = new window.MarkerClusterer(gMap, getMarkers(), {
+      //   imagePath: cluster,
+      //   styles: [
+      //     {
+      //       url: cluster,
+      //       height: 30,
+      //       width: 30,
+      //       //anchorText: [15, -10],
+      //       repeat: false,
+      //       textColor: "#000000",
+      //       textSize: 12,
+      //       zoomOnClick: true,
+      //     },
+      //   ],
+      // });
 
-      window.google.maps.event.addListener(gMap, "zoom_changed", () => {
-        const zoomLevel = map.current.getZoom();
-        setZoomLevel(zoomLevel);
-        if (zoomLevel >= 6) {
-          //show Heat Map
+      // clustersMarker.addListener( "clusterclick", () => {
+      //   console.log("cluster click");
+      // });
 
-          getPointsAndSetHeatMap(gHeatMap);
-          if (clustersMarker) {
-            clustersMarker.clearMarkers();
-          }
-        } else {
-          //show Marker
-          clustersMarker.clearMarkers();
-          clustersMarker.addMarkers(getMarkers());
-          gHeatMap.setData([]);
-        }
-      });
+      // window.google.maps.event.addListener(gMap, "zoom_changed", () => {
+      //   const zoomLevel = map.current.getZoom();
+      //   setZoomLevel(zoomLevel);
+      //   if (zoomLevel >= 6) {
+      //     //show Heat Map
+
+      //     getPointsAndSetHeatMap(gHeatMap);
+      //     if (clustersMarker) {
+      //       clustersMarker.clearMarkers();
+      //     }
+      //   } else {
+      //     //show Marker
+      //     clustersMarker.clearMarkers();
+      //     clustersMarker.addMarkers(getMarkers());
+      //     gHeatMap.setData([]);
+      //   }
+      // });
 
       //here we are setting our cluster
     }
@@ -87,6 +92,24 @@ export default function GoogleMap() {
       if (zoomeLevel >= 6) {
         getPointsAndSetHeatMap(heatMap);
       }
+    }
+
+    if (map.current) {
+      const dd = new MyCluster(map.current, getMarkers(), {
+        imagePath: cluster,
+        zoomOnClick: false,
+        styles: [
+          {
+            url: cluster,
+            height: 30,
+            width: 30,
+            //anchorText: [15, -10],
+            repeat: false,
+            textColor: "#000000",
+            textSize: 12,
+          },
+        ],
+      });
     }
   }, [heatMap]);
 
@@ -127,5 +150,5 @@ export default function GoogleMap() {
     }
   };
 
-  return <div id="map"></div>;
+  return <div id="map" style={{ width: "100%", height: "100%" }}></div>;
 }
